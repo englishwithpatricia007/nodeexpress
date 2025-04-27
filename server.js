@@ -1,21 +1,20 @@
-import e from "express";
+import express from "express";
+
+const app = express();
+app.use(express.json());
 
 const users = [];
-const app = e();
 
-app.post('/usuarios', (req, res) => {
-    console.log(req)
-    res.json({ message: 'POST /usuarios' });
-});
-app.get('/usuarios', (req, res) => {   
-    
-    res.json({ message: 'GET /usuariosyyyyy' });
-});
 
 app.get('/usuarios', (req, res) => {
-    res.send('GET /usuariosxxxx')
+    res.json(users)
 }
 );
+
+app.post('/usuarios', (req, res) => {
+    users.push(req.body)
+    res.send('POST /usuarios');
+});
 
 app.listen(3333, () => {
     console.log('Servidor rodando na porta 3333');
@@ -40,8 +39,10 @@ Criar nossa API de usuários
 */
 
 
-
 /*
 1) método HTTP: GET, POST, PUT, DELETE, PATCH, OPTIONS, HEAD
 2) URL: /api/v1/usuarios
 */
+
+// Dados sensíveis: senhas, tokens, dados pessoais Body Params
+// Dados não sensíveis: nome, email, telefone, endereço Query Params / Route Params

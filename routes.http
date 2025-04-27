@@ -1,0 +1,12 @@
+POST http://localhost:3333/usuarios
+Content-Type: application/json
+Content-Accept-Language: pt-br
+
+{
+  "nome": "Rodolfo",
+  "idade": "31",
+  "email": "rodolfo@email.com"
+}
+
+###
+GET http://localhost:3333/usuarios

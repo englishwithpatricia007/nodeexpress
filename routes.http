@@ -10,3 +10,5 @@ Content-Accept-Language: pt-br
 ###
 GET http://localhost:3333/usuarios
 
+###
+GET http://localhost:3333/usuarios?name=Paulo&email=paula@gmail.com 

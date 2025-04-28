@@ -1,5 +1,5 @@
 import express from "express";
-
+import { PrismaClient } from "@prisma/client";
 const app = express();
 app.use(express.json());
 
@@ -7,13 +7,13 @@ const users = [];
 
 
 app.get('/usuarios', (req, res) => {
-    res.json(users)
+    res.status(200).json(users)
 }
 );
 
 app.post('/usuarios', (req, res) => {
     users.push(req.body)
-    res.send('POST /usuarios');
+    res.status(201).json(req.body);
 });
 
 app.listen(3333, () => {
@@ -46,3 +46,13 @@ Criar nossa API de usuários
 
 // Dados sensíveis: senhas, tokens, dados pessoais Body Params
 // Dados não sensíveis: nome, email, telefone, endereço Query Params / Route Params
+
+//HTTP Status Codes
+// 200 - OK
+// 201 - Created   
+// 204 - No Content
+
+//2XX - Sucesso
+//3XX - Redirecionamento
+//4XX - Erro do cliente
+//5XX - Erro do servidor
